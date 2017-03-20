@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Majestic Wine Test</title>
+
+        <link rel="stylesheet" type="text/css" href="styles/main.css" />
+
+    </head>
+    <body ng-app="MajesticWine" ng-controller="CommentsController as Ctrl">
+
+        <section class="comment" ng-repeat="comment in Ctrl.comments" ng-init="comment.id = $index">
+            
+            <div class="comment_header">
+                <a href="#" class="comment_profilelink" ng-bind="comment.name"></a> <span class="comment_date" ng-bind="comment.date"></span>
+            </div>
+
+            <div class="comment_content" ng-bind="comment.content">
+
+            </div>
+
+            <div class="comment_footer">
+                <button class="button button_like button_like-clicked">Like</button> <span class="comment_likes">You and 5 other people like this</span>
+            </div>
+
+            <section class="comment_reply" ng-repeat="reply in comment.replies">
+
+                <div class="comment_header">
+                    <a href="#" class="comment_profilelink" ng-bind="reply.name"></a> <span class="comment_date" ng-bind="reply.date"></span>
+                </div>
+
+                <div class="comment_content" ng-bind="reply.content">
+
+                </div>
+
+                <div class="comment_footer">
+                    <button class="button button_like">Like</button> <span class="comment_likes">1 person likes this</span>
+                </div>
+
+            </section>
+
+            <section class="comment_reply">
+
+                <div class="comment_content-input">
+                    <input type="text" class="comment_input" placeholder="Write a comment..." ng-model="Ctrl.reply[comment.id]"/>
+                </div>
+
+                <div class="comment_footer">
+                    <button class="button_submit" ng-click="Ctrl.addReply(comment.id)">Send</button>
+                </div>
+
+            </section>
+
+        </section>
+
+        <section>
+            <hr />
+            <h4 id="reviewtitle" class="caps"><span>Write your own review</span></h4>
+        </section>
+
+        <section class="comment">
+
+            <div class="comment_content-input">
+                <input type="text" class="comment_input" placeholder="Write a comment..." ng-model="Ctrl.comment"/>
+            </div>
+
+            <div class="comment_footer">
+                <button class="button_submit" ng-click="Ctrl.addComment()">Leave a review</button>
+            </div>
+
+        </section>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular.min.js" type="text/javascript"></script>
+        <script src="scripts/app.js" type="text/javascript"></script>
+
+
+    </body>
+</html>
