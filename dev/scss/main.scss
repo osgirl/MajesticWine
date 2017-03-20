@@ -1,0 +1,130 @@
+@import 'media';
+@import 'mixins';
+@import 'helpers';
+@import 'colours';
+
+body {
+	font-family: 'arial';
+	font-size: 16px;
+
+	font-color: $color_text;
+
+	@media #{$screen_small} {
+		font-size: 14px;
+	}
+}
+
+section {
+	clear: both;
+
+	padding-top: 10px;
+}
+
+h4 {
+	font-size: 21px;
+}
+
+a {
+	color: $color_primary;
+}
+
+hr {
+	border: 1px solid $color-secondary;
+}
+
+.button {
+	font-size: 1em;
+
+	padding: 0.5em 1.5em;
+
+	text-transform: uppercase;
+
+	color: $color_primary;
+	border: 1px solid $color_primary;
+	background-color: #fff;
+
+	@include radius;
+	&_like {
+		@extend .button;
+
+		&-clicked {
+			color: #fff;
+			border: 1px solid $color_primary;
+			background-color: $color_primary;
+		}
+	}
+
+	&_submit {
+		float: right;
+
+		width: 100%;
+
+		color: #fff;
+		background-color: $color_primary;
+
+		@extend .button;
+
+		@media (min-width: 500px) {
+			width: auto;
+		}
+	}
+}
+
+.comment {
+	margin: 1.5em;
+
+	&_reply {
+		margin: 1.5em 1.5em 1.5em 5.5em;
+
+		@media #{$screen_small} {
+			margin-left: 2.5em;
+		}
+	}
+
+	&_profilelink {
+		font-weight: bold;
+
+		text-decoration: none;
+	}
+
+	&_content {
+		@include speach-bubble;
+
+		&-input {
+			@include speach-bubble(#fff);
+
+			& > input {
+				font-size: 1em;
+
+				width: 100%;
+
+				color: $color_text-light;
+				border: 1px;
+
+				&:focus {
+					outline: none;
+				}
+			}
+		}
+	}
+
+	&_likes {
+		font-size: 0.9em;
+
+		padding-left: 1em;
+	}
+}
+
+#reviewtitle {
+	@media #{$screen_medium} {
+		margin-top: -20px;
+
+		text-align: center;
+
+		& span {
+			padding: 0 10px;
+
+			background-color: #fff;
+		}
+	}
+}
